@@ -18,8 +18,8 @@
       %ul#navigation.alt
         - if logged_in?
           %li== #{link_to "Create ladder", new_ladder_path} |
-          %li= link_to("Log Out", session_path, :method => :delete)
+          %li.last= link_to("Log Out", session_path, :method => :delete)
         - unless logged_in?
           %li== #{link_to "Log In", login_path, :rel => 'facebox'} |
-          %li= link_to "Sign Up", signup_path, :rel => 'facebox'
+          %li.last= link_to "Sign Up", signup_path, :rel => 'facebox'
       = yield
