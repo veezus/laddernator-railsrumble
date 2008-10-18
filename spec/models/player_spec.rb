@@ -11,9 +11,22 @@ describe Player do
     before do
       @player = Player.spawn
     end
+
+    it "should have ranks" do
+      @player.should respond_to(:ranks)
+    end
+
     it "should have ladders" do
       @player.should respond_to(:ladders)
     end
+  end
+
+  it "has a rank for a given ladder" do
+    player = Player.generate!
+    ladder = Ladder.generate!
+    rank = Rank.generate!(:player => player, :ladder => ladder, :position => 2)
+
+    player.rank_for(ladder).should == rank
   end
 
   describe 'being created' do

@@ -1,7 +1,12 @@
 require 'digest/sha1'
 class Player < ActiveRecord::Base
   
-  has_many :ladders, :through => :rank
+  has_many :ranks
+  has_many :ladders, :through => :ranks
+
+  def rank_for(ladder)
+    ranks.find_by_ladder_id(ladder)
+  end
   
   def deliver_notifications
     # transports.each do |transport|

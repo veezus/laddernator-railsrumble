@@ -16,11 +16,6 @@ describe Rank do
       @rank.valid?
       @rank.errors.should be_invalid(:ladder)
     end
-    it "should have a position" do
-      @rank.position = nil
-      @rank.valid?
-      @rank.errors.should be_invalid(:position)
-    end
   end
   
   describe "#can_challenge?" do
@@ -46,6 +41,16 @@ describe Rank do
     it "should return true if the challenger is one below the challengee" do
       @challenger.position = 2
       @challenger.can_challenge?(@challengee).should be_true
+    end
+  end
+
+  describe "creating" do
+    it "should add the rank to the bottom of the list for its ladder" do
+      ladder = Ladder.generate!
+      rank = Rank.generate!(:ladder => ladder)
+      rank2 = Rank.generate!(:ladder => ladder)
+
+      ladder.ranks.last.should == rank2
     end
   end
 end
