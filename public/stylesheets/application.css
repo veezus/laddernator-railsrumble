@@ -79,6 +79,10 @@ a.reject {
   background: #D01F2F;
 }
 
+a.join {
+  background: #3399ff;
+}
+
 .table .header {
   font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
   background-color: #5b5b5b;
