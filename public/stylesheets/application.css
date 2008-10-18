@@ -83,23 +83,33 @@ a.reject {
 
 .table .header {
   font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-  background-color: #F0F0F0;
-  font-size: 16px;
-  line-height: 36px;
+  background-color: #5b5b5b;
+  color: #fff;
+  border-left:  1px solid #5b5b5b;
+  border-right: 1px solid #5b5b5b;  
+  font-size: 14px;
+  line-height: 36px;  
+}
+
+.table .name {
+  font-family: Georgia, serif;
+  font-size: 1.4em;  
 }
 
 .table .row {
   background: #f8f8f8;
   font-size: 14px;
   line-height: 36px;
-  margin: 9px 0;
+  padding: 6px 0;
+  border-bottom: 1px solid #e7e7e7;
+  border-left:  1px solid #e7e7e7;
+  border-right: 1px solid #e7e7e7;
 }
 
 .table .row.me {
   background: #FCFFD2;
   font-size: 18px;
   line-height: 54px;
-  margin: 9px 0;
 }
 
 .table .row.me .rank {
@@ -117,8 +127,6 @@ a.reject {
   margin: 6px 0 4px -2px;
   text-align: center;
 }
-
-.table .name {font-size: 1.5em;}
 
 .table .number {
   color: #111;
