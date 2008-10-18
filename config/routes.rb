@@ -6,4 +6,6 @@ ActionController::Routing::Routes.draw do |map|
 
   map.login 'login', :controller => 'sessions', :action => 'new'
   map.signup 'signup', :controller => 'players', :action => 'new'
+  
+  map.root :controller => 'ladders', :action => 'index', :resource_path => '/ladders'
 end
