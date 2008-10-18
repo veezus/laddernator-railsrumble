@@ -21,8 +21,9 @@
         - unless logged_in?
           %li== #{link_to "Log In", login_path, :rel => 'facebox'} |
           %li.last= link_to "Sign Up", signup_path, :rel => 'facebox'
-      - if @ladders
-        %ul
-          - @ladders.each do |ladder|
-            %li= link_to ladder.name, ladder, :class => viewing_current_class(@ladder, ladder)
-      = yield
+      #main
+        - if @ladders
+          %ul#ladders
+            - @ladders.each do |ladder|
+              %li= link_to ladder.name, ladder, :class => viewing_current_class(@ladder, ladder)
+        = yield
