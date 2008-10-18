@@ -1,7 +1,6 @@
-= render :partial => 'challenge'
-= render :partial => 'acceptance'
-= render :partial => 'pending'
-= render :partial => 'join'
+= render :partial => 'challenge', :locals => {:ladder => @ladder}
+/= render :partial => 'acceptance'
+/= render :partial => 'pending'
 
 .players.table
   .player.table
@@ -10,24 +9,10 @@
       .span-2.wins Wins
       .span-2.losses Losses
 
-  .player.row.clearfix
-    .span-1
-      .rank.number 1
-    .span-8.name= link_to 'John Doe'
-    .span-2.wins.number 13
-    .span-2.losses.number 2
-
-  .player.row.me.clearfix
-    .span-1
-      .rank.number 2
-    .span-8.name Me Baby, Me!
-    .span-2.wins.number 10
-    .span-2.losses.number 2
-
-  .player.row.clearfix
-    .span-1
-      .rank.number 3
-    .span-8.name= link_to 'Jane Doe'
-    .span-2.wins.number 9
-    .span-2.losses.number 4
-
+  - @ladder.players.each do |player|
+    .player.row.clearfix{:class => "#{player == current_player ? 'me' : ''}"}
+      .span-1
+        .rank.number= player.rank_for(@ladder).position
+      .span-8.name= player.login
+      .span-2.wins.number
+      .span-2.losses.number

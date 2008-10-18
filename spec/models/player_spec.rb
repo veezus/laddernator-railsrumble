@@ -29,6 +29,17 @@ describe Player do
     player.rank_for(ladder).should == rank
   end
 
+  it "gets the next highest ranked player for a given ladder" do
+    ladder = Ladder.generate!
+    challengee = Player.generate!
+    challenger = Player.generate!
+    ladder.players << challengee
+    ladder.players << challenger
+
+    challenger.next_player_for(ladder).should == challengee
+    
+  end
+
   describe 'being created' do
     before do
       @player = nil

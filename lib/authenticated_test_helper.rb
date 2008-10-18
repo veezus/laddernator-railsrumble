@@ -1,7 +1,7 @@
 module AuthenticatedTestHelper
   # Sets the current player in the session from the player fixtures.
   def login_as(player)
-    @request.session[:player_id] = player ? players(player).id : nil
+    @request.session[:player_id] = player ? player.id : nil
   end
 
   def authorize_as(user)

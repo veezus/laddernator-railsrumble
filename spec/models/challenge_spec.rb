@@ -33,7 +33,7 @@ describe Challenge do
       Challenge.create!(:ladder => ladder, :challenger => challenger, :challengee => challengee).should be_valid
     end
 
-    it "should not be valid if the challengee is above the challengee" do
+    it "should not be valid if the challenger is above the challengee" do
       ladder = Ladder.generate!
       challenger = Player.generate!
       challengee = Player.generate!
@@ -43,7 +43,7 @@ describe Challenge do
       Challenge.create(:ladder => ladder, :challenger => challenger, :challengee => challengee).should_not be_valid
     end
 
-    it "should not be valid if the challengee is more than one below the challengee" do
+    it "should not be valid if the challenger is more than one below the challengee" do
       ladder = Ladder.generate!
       challenger = Player.generate!
       challengee = Player.generate!

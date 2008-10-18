@@ -7,6 +7,10 @@ class Player < ActiveRecord::Base
   def rank_for(ladder)
     ranks.find_by_ladder_id(ladder)
   end
+
+  def next_player_for(ladder)
+    rank_for(ladder).higher_item.player
+  end
   
   def deliver_notifications
     # transports.each do |transport|
