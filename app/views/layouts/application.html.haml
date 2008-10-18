@@ -4,13 +4,23 @@
     %title
       Title
     = stylesheet_link_tag 'blueprint/screen', 'application'
+    = javascript_include_tag 'jquery-1.2.6.min'
+
+    / FACEBOX
+    %link{ :href => "/facebox/facebox.css", :rel => "stylesheet", :type => "text/css", :media => "screen" }
+    %script{ :src => "/facebox/facebox.js", :type => "text/javascript" }
+
+    = javascript_include_tag 'application.js'
+
   %body
     .container
       %h1 Ladder Challenge
       #auth.alt
-        = link_to "Log In", login_path
-        | 
-        = link_to "Sign Up", signup_path
-        |
-        = link_to "Create ladder", new_ladder_path
+        - unless logged_in?
+          = link_to "Log In", login_path, :rel => 'facebox'
+          |
+          = link_to "Sign Up", signup_path
+        - if logged_in?
+          |
+          = link_to "Create ladder", new_ladder_path
       = yield
