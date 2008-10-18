@@ -14,7 +14,11 @@ class ApplicationController < ActionController::Base
 
   filter_parameter_logging :password
 
-  protected
+protected
+
+  def get_ladders
+    @ladders = current_player.ladders if logged_in?
+  end
 
   def no_layout_for_xhr
     request.xhr? ? false : 'application'
