@@ -22,4 +22,30 @@ describe Rank do
       @rank.errors.should be_invalid(:position)
     end
   end
+  
+  describe "#can_challenge?" do
+    before do
+      @ladder = Ladder.generate!
+      @challengee = Rank.spawn(:ladder => @ladder, :position => 1)
+      @challenger = Rank.spawn(:ladder => @ladder, :position => 5)
+    end
+    it "should return false if the ranks are on different ladders" do
+      @challengee.ladder = Ladder.generate!
+      @challenger.can_challenge?(@challengee).should be_false
+    end
+    it "should return false if the players are the same" do
+      @challenger = @challengee
+      @challenger.can_challenge?(@challengee).should be_false
+    end
+    it "should return false if the challenger is above the challengee" do
+      @challengee.can_challenge?(@challenger).should be_false
+    end
+    it "should return false if the challeger is more than one below the challengee" do
+      @challenger.can_challenge?(@challengee).should be_false
+    end
+    it "should return true if the challenger is one below the challengee" do
+      @challenger.position = 2
+      @challenger.can_challenge?(@challengee).should be_true
+    end
+  end
 end

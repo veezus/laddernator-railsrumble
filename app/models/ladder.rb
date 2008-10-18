@@ -8,4 +8,5 @@ class Ladder < ActiveRecord::Base
   def owned_by?(player)
     owner == player
   end
+
 end

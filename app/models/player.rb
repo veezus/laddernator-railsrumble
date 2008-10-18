@@ -2,6 +2,12 @@ require 'digest/sha1'
 class Player < ActiveRecord::Base
   
   has_many :ladders, :through => :rank
+  
+  def deliver_notifications
+    # transports.each do |transport|
+    #   transport.deliver_notification
+    # end
+  end
 
   # Virtual attribute for the unencrypted password
   attr_accessor :password
