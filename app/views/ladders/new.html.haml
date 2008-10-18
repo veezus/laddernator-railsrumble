@@ -1,12 +1,13 @@
 = error_messages_for :ladder
-- form_for @ladder do |f|
-  %p
-    = f.label :name
-    %br/
-    = f.text_field :name
-  %p
-    = f.label :game
-    %br/
-    = f.text_field :game
-  %p
-    = submit_tag
+- form_for @ladder do |make|
+  #create_ladder.table
+    .table
+      .header.clearfix Create a ladder
+    .row.clearfix
+      = make.label :name
+      = make.text_field :name
+    .row.clearfix
+      = make.label :game
+      = make.text_field :game
+    .row.clearfix.submit
+      = make.submit 'Create'
