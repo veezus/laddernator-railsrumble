@@ -1,0 +1,14 @@
+development:
+  adapter: mysql
+  encoding: utf8
+  database: challenge_development
+  username: root
+  password:
+
+test:
+  adapter: mysql
+  encoding: utf8
+  database: challenge_test
+  username: root
+  password:
+
