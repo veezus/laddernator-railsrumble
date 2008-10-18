@@ -34,21 +34,11 @@ a {
 
 #navigation {
   position: absolute;
-  top:   25px; 
+  top:   9px;
   right: 0;
   list-style-type: none;
   font-size: 16px;
 }
-
-  #navigation li {
-    float: left;
-    margin-left:  10px;
-    margin-right: 10px;
-  }
-
-    #navigation li.last {
-      margin-right: 0;
-    }
 
 .challenge .info, .challenge a.button {
   font-size: 24px;
@@ -94,14 +84,14 @@ a.reject {
   background-color: #5b5b5b;
   color: #fff;
   border-left:  1px solid #5b5b5b;
-  border-right: 1px solid #5b5b5b;  
+  border-right: 1px solid #5b5b5b;
   font-size: 14px;
-  line-height: 36px;  
+  line-height: 36px;
 }
 
 .table .name {
   font-family: Georgia, serif;
-  font-size: 1.4em;  
+  font-size: 1.4em;
 }
 
 .table .row {
@@ -115,11 +105,15 @@ a.reject {
 }
 
 .table .row.me {
+  font-size: 18px;
+  line-height: 54px;
   background: #FCFFD2;
 }
 
 .table .row.me .rank {
   background: #D01F2F;
+  margin-top: 15px;
+  margin-bottom: 15px;
 }
 
 .table .rank {
@@ -129,7 +123,7 @@ a.reject {
   height: 24px;
   font-size: 10px;
   line-height: 24px;
-  margin: 6px 0 4px -2px;
+  margin: 6px 0 4px -3px;
   text-align: center;
 }
 
