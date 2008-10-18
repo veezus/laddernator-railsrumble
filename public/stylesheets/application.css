@@ -161,3 +161,7 @@ h1 a {
   width: 50%;
   font-weight: bold;
 }
+
+#facebox .row {
+  padding: 15px;
+}

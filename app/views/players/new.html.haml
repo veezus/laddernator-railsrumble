@@ -1,17 +1,17 @@
 = error_messages_for :player
-.table
 - form_for @player do |make|
-  %p
-    = make.label :login
-    = make.text_field :login
-  %p
-    = make.label :email
-    = make.text_field :email
-  %p
-    = make.label :password
-    = make.password_field :password
-  %p
-    = make.label :password_confirmation
-    = make.password_field :password_confirmation
-  %p
-    = make.submit 'Sign up'
+  .table
+    .row.clearfix
+      = make.label :login
+      = make.text_field :login
+    .row.clearfix
+      = make.label :email
+      = make.text_field :email
+    .row.clearfix
+      = make.label :password
+      = make.password_field :password
+    .row.clearfix
+      = make.label :password_confirmation
+      = make.password_field :password_confirmation
+    .row.clearfix.submit
+      = make.submit 'Sign up'
