@@ -1,0 +1,49 @@
+.challenge.box.clearfix
+  .span-12.info
+    =link_to 'John Doe'
+    is currently above you.
+  .span-6.last= link_to "Challenge!", nil, :class => 'challenge button'
+
+
+.challenge.box.clearfix
+  .span-12.info
+    =link_to 'Jane Doe'
+    has challenged you!
+  .span-6.last
+    .span-3= link_to "Accept!", nil, :class => 'accept button'
+    .span-3.last= link_to "Reject!", nil, :class => 'reject button'
+
+.challenge.box.clearfix
+  .span-12.info
+    You have challenged
+    ==#{link_to 'John Doe'}.
+  .span-6.last= link_to "Pending!", nil, :class => 'pending button'
+
+.players.table
+  .player.table
+    .header.clearfix
+      .span-8.prepend-1.player Ladder
+      .span-2.wins Wins
+      .span-2.losses Losses
+
+  .player.row.clearfix
+    .span-1
+      .rank.number 1
+    .span-8.name= link_to 'John Doe'
+    .span-2.wins.number 13
+    .span-2.losses.number 2
+
+  .player.row.me.clearfix
+    .span-1
+      .rank.number 2
+    .span-8.name Me Baby, Me!
+    .span-2.wins.number 10
+    .span-2.losses.number 2
+
+  .player.row.clearfix
+    .span-1
+      .rank.number 3
+    .span-8.name= link_to 'Jane Doe'
+    .span-2.wins.number 9
+    .span-2.losses.number 4
+

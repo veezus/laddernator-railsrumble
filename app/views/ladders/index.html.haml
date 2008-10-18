@@ -1,4 +1,6 @@
-%h1
-  Ladder Challenge
-- Ladder.all.each do |ladder|
-  = render :partial => 'ladder', :object => ladder
+%h2 Current Ladders
+.ladders.table
+  .header.clearfix
+    .span-8.prepend-1.ladder Ladder
+    .span-2.players Players
+  = render :partial => @ladders

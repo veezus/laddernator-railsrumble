@@ -1,0 +1,107 @@
+/*
+ * COLORS:
+ *
+ * hilight: #FCFFD2
+ # link:    #AA2F20
+ */
+
+body {
+  font-family: Georgia, serif;
+  color: #333;
+}
+
+a {
+  color: #AA2F20;
+  text-decoration: none;
+}
+
+.number {
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+.container {
+  width: 750px;
+  margin: 0 auto;
+  position: relative;
+}
+
+#auth {
+  position: absolute;
+  top: 0; right: 0;
+}
+
+.challenge .info, .challenge a.button {
+  font-size: 24px;
+  line-height: 36px;
+}
+
+.box {
+  background: #FCFFD2;
+}
+
+a.button {
+  text-decoration: none;
+  color: #fff;
+  display: block;
+  text-align: center;
+}
+
+a.challenge {
+  background: #FF9E1B;
+}
+
+a.pending {
+  background: #aaa;
+}
+
+a.accept {
+  background: #01CB2A;
+}
+
+a.reject {
+  background: #D01F2F;
+}
+
+.table .header {
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  background-color: #F0F0F0;
+  font-size: 16px;
+  line-height: 36px;
+}
+
+.table .row {
+  background: #f8f8f8;
+  font-size: 14px;
+  line-height: 36px;
+  margin: 9px 0;
+}
+
+.table .row.me {
+  background: #FCFFD2;
+  font-size: 18px;
+  line-height: 54px;
+  margin: 9px 0;
+}
+
+.table .row.me .rank {
+  background: #D01F2F;
+  margin: 15px 0 15px -4px;
+}
+
+.table .rank {
+  background-color: #F0F0F0;
+  background: #333;
+  color: #fff !important;
+  height: 24px;
+  font-size: 10px;
+  line-height: 24px;
+  margin: 6px 0 4px -4px;
+  text-align: center;
+}
+
+.table .name {font-size: 1.5em;}
+
+.table .number {
+  color: #111;
+  font-weight: bold;
+}
