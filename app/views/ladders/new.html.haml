@@ -1,0 +1,12 @@
+= error_messages_for :ladder
+- form_for @ladder do |f|
+  %p
+    = f.label :name
+    %br/
+    = f.text_field :name
+  %p
+    = f.label :game
+    %br/
+    = f.text_field :game
+  %p
+    = submit_tag
