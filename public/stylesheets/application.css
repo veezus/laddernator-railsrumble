@@ -6,7 +6,7 @@
  */
 
 body {
-  font-family: Georgia, serif;
+  font-family: 'Helvetica Nueue', Helvetica, sans-serif;
   background: #690000;
   color: #333;
 }
@@ -112,4 +112,12 @@ a.reject {
 .table .number {
   color: #111;
   font-weight: bold;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: Georgia, serif;
+}
+
+h1 a {
+  color: #4e9771;
 }
