@@ -1,5 +1,5 @@
 class Ladder < ActiveRecord::Base
-  has_many   :players
+  has_many   :players, :through => :rank
   belongs_to :owner, :class_name => :player
   
   validates_length_of :name, :in => 3..50

@@ -1,7 +1,7 @@
 require 'digest/sha1'
 class Player < ActiveRecord::Base
   
-  has_many :ladders
+  has_many :ladders, :through => :rank
 
   # Virtual attribute for the unencrypted password
   attr_accessor :password
