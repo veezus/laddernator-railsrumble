@@ -7,7 +7,14 @@
 
 body {
   font-family: Georgia, serif;
+  background: #690000;
   color: #333;
+}
+
+.container {
+  border: 3px solid #b17a7a;
+  background: #fff;
+  padding: 14px;
 }
 
 a {
@@ -25,9 +32,10 @@ a {
   position: relative;
 }
 
-#auth {
+#navigation {
   position: absolute;
-  top: 0; right: 0;
+  top:   10px; 
+  right: 10px;
 }
 
 .challenge .info, .challenge a.button {
