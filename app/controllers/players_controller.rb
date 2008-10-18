@@ -5,6 +5,7 @@ class PlayersController < ApplicationController
 
   # render new.rhtml
   def new
+    @player = Player.new
   end
 
   def create
