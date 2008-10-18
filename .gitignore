@@ -4,3 +4,4 @@ db/schema.rb
 log/*
 tmp/*
 *.swp
+vendor/plugins/rails-footnotes
