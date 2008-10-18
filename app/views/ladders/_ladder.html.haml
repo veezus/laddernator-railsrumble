@@ -1,6 +1,6 @@
 - count = ladder_counter + 1
-.ladder.row.clearfix{:class => "#{count.odd? ? 'odd' : 'even'}"}
+.ladder.row.clearfix{:class => "#{count.odd? ? 'odd' : 'even'} #{logged_in? && ladder.owner == current_player ? 'me' : ''}"}
   .span-1
     .rank.number== ##{count}
-  .span-8.name= link_to ladder.name, ladder
+  .span-14.name= link_to ladder.name, ladder
   .span-2.players.number 13

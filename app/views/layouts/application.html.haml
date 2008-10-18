@@ -14,13 +14,14 @@
 
   %body
     .container
-      %h1 Ladder Challenge
+      %h1= link_to 'Ladder Challenge', root_path
       #auth.alt
+        - if logged_in?
+          = link_to "Create ladder", new_ladder_path
+          |
+          = link_to "Log Out", session_path, :method => :delete
         - unless logged_in?
           = link_to "Log In", login_path, :rel => 'facebox'
           |
-          = link_to "Sign Up", signup_path
-        - if logged_in?
-          |
-          = link_to "Create ladder", new_ladder_path
+          = link_to "Sign Up", signup_path, :rel => 'facebox'
       = yield

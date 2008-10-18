@@ -85,7 +85,7 @@ a.reject {
 
 .table .row.me .rank {
   background: #D01F2F;
-  margin: 15px 0 15px -4px;
+  margin: 15px 0 15px -2px;
 }
 
 .table .rank {
@@ -95,7 +95,7 @@ a.reject {
   height: 24px;
   font-size: 10px;
   line-height: 24px;
-  margin: 6px 0 4px -4px;
+  margin: 6px 0 4px -2px;
   text-align: center;
 }
 

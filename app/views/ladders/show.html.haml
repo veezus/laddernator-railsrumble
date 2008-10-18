@@ -1,28 +1,13 @@
-.challenge.box.clearfix
-  .span-12.info
-    =link_to 'John Doe'
-    is currently above you.
-  .span-6.last= link_to "Challenge!", nil, :class => 'challenge button'
+= render :partial => 'challenge'
+= render :partial => 'acceptance'
+= render :partial => 'pending'
 
-
-.challenge.box.clearfix
-  .span-12.info
-    =link_to 'Jane Doe'
-    has challenged you!
-  .span-6.last
-    .span-3= link_to "Accept!", nil, :class => 'accept button'
-    .span-3.last= link_to "Reject!", nil, :class => 'reject button'
-
-.challenge.box.clearfix
-  .span-12.info
-    You have challenged
-    ==#{link_to 'John Doe'}.
-  .span-6.last= link_to "Pending!", nil, :class => 'pending button'
+%h2= @ladder.name
 
 .players.table
   .player.table
     .header.clearfix
-      .span-8.prepend-1.player Ladder
+      .span-8.prepend-1.player Player
       .span-2.wins Wins
       .span-2.losses Losses
 
