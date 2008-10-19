@@ -108,6 +108,7 @@ a.join {
 .table .name {
   font-family: Georgia, serif;
   font-size: 1.4em;
+  color: #303030;
 }
 
 .table .row {
