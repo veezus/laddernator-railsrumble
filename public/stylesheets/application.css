@@ -243,3 +243,6 @@ h1 a {
   border-bottom: 2px solid #6cde5d;
   color: #000;
 }
+
+.row .wins   {  border-right: 1px solid #dedbdb; margin-right: 0;  margin-left: 13px; width: 47px; }
+.row .losses {  border-left: 1px solid #fefdfd;  margin-left: 0;   padding-left: 37px;}
