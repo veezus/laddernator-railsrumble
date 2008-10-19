@@ -4,7 +4,7 @@
     == You have challenged #{challengee.login}.
   - if current_player.pending_challenge.challenger?(current_player)
     .span-6.last
-      .span-3= link_to "I won!", ladder_challenge_path([@enclosing_resource, current_player.pending_challenge], :won => true), :class => 'accept button'
-      .span-3.last= link_to "I lost...", ladder_challenge_path([@enclosing_resource, current_player.pending_challenge], :won => false), :class => 'reject button'
+      .span-3= link_to "I won!", won_challenge_path(current_player.pending_challenge), :method => :put, :class => 'accept button'
+      .span-3.last= link_to "I lost...", lost_challenge_path(current_player.pending_challenge), :method => :put, :class => 'reject button'
   - else
     .span-6.last= link_to "Pending!", nil, :class => 'pending button'
