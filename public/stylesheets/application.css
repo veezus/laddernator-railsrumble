@@ -105,18 +105,29 @@ a.join {
   border-right: 1px solid #e7e7e7;
 }
 
+.table .rank .support {
+  display: block;
+  height: 3px;
+  width:  4px;
+  background: url(/images/left_support.png);
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+}
+
 .table .row.me .rank {
-  background: #D01F2F;
+  background: #D01F2F url(/images/flag_left_red.png) no-repeat;
 }
 
 .table .rank {
+  position: relative;
   background: #333 url(/images/flag_left_black.png) no-repeat;
   color: #fff !important;
   height: 24px;
   font-size: 10px;
   font-weight: normal;
   line-height: 24px;
-  margin: 3px 0 4px -3px;
+  margin: 3px 0 4px -5px;
   padding: 3px;
   padding-left:  9px !important;
   padding-right: 9px !important;
