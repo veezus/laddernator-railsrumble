@@ -203,3 +203,11 @@ h1 a {
   padding-right: 15px;
   font-weight: bold;
 }
+
+.challenge { position: relative; }
+.challenge .button { 
+  position: absolute; 
+  top: 8px; 
+  right: 15px; 
+  width: 200px; 
+}
