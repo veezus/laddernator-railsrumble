@@ -11,10 +11,13 @@ body {
   color: #303030;
 }
 
-.container {
+#wrapper {
+  position: relative;
   border: 3px solid #b17a7a;
   background: #f8f8f8;
   padding: 14px;
+  width: 750px;
+  margin: 0 auto;
 }
 
 a {
@@ -24,12 +27,6 @@ a {
 
 .number {
   font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-}
-
-.container {
-  width: 750px;
-  margin: 0 auto;
-  position: relative;
 }
 
 #navigation {

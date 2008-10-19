@@ -16,7 +16,7 @@
       #flash{:class => key}
         %strong== #{key.to_s.capitalize}:
         = message
-    .container
+    #wrapper
       %h1= link_to 'LADDERNATOR', root_path
       %ul#navigation.alt
         - if logged_in?
