@@ -39,5 +39,6 @@
         .span-1
           .rank.number= player.rank_for(@ladder).position
         .span-8.name= player.login
-        .span-2.wins.number
-        .span-2.losses.number
+        .span-2.wins.number= Challenge.for_player(player).on_ladder(@ladder).select{|c| c.won_by?(player)}.size
+        .span-2.losses.number= Challenge.for_player(player).on_ladder(@ladder).select{|c| c.lost_by?(player)}.size
+
