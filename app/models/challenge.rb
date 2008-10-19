@@ -26,6 +26,14 @@ class Challenge < ActiveRecord::Base
     challengee == player
   end
 
+  def won_by?(player)
+    completed? && (challenger?(player) && won?) || (challengee?(player) && lost?)
+  end
+
+  def lost_by?(player)
+    completed? && (challenger?(player) && lost?) || (challengee?(player) && won?)
+  end
+
   def won!
     update_attribute(:won, true)
     update_attribute(:completed_at, Time.now)
@@ -35,6 +43,10 @@ class Challenge < ActiveRecord::Base
   def lost!
     update_attribute(:won, false)
     update_attribute(:completed_at, Time.now)
+  end
+
+  def lost?
+    completed? && !won
   end
 
   private
