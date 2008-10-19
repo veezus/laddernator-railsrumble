@@ -4,7 +4,7 @@
     .rank.number== ##{count}
   .span-10.name= link_to ladder.name, ladder
   .span-4
-    - if current_player.pending_challenge_on?(ladder)
+    - if logged_in? && current_player.pending_challenge_on?(ladder)
       = link_to("Pending Challenge!", ladder)
     - else
       &nbsp;
