@@ -9,7 +9,15 @@ class Player < ActiveRecord::Base
   end
 
   def next_player_for(ladder)
-    rank_for(ladder).higher_item.player
+    rank_for(ladder).higher_item.player if rank_for(ladder).higher_item
+  end
+
+  def pending_challenge
+    Challenge.pending.for_player(self).first
+  end
+
+  def pending_challenge?
+    !!pending_challenge
   end
   
   def deliver_notifications
