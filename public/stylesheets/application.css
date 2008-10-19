@@ -211,3 +211,30 @@ h1 a {
   right: 15px; 
   width: 200px; 
 }
+
+#flash {
+  z-index: 1000;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  font-family: 'Helvetica Neue', Helvetica, sans-serif;
+  border: none;
+  border-bottom: 2px solid #fff;
+}
+
+#flash strong {
+  text-transform: uppercase;
+}
+
+#flash.success {
+  background: #9b0000;
+  border-bottom: 2px solid #b74747;
+  color: #fff;
+}
+
+#flash.notice {
+  background: #8bf67c;
+  border-bottom: 2px solid #6cde5d;
+  color: #000;
+}

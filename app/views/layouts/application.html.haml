@@ -12,6 +12,10 @@
     = javascript_include_tag 'application.js'
 
   %body
+    - flash.each do |key, message|
+      #flash{:class => key}
+        %strong== #{key.to_s.capitalize}:
+        = message
     .container
       %h1= link_to 'Ladder Challenge', root_path
       %ul#navigation.alt
