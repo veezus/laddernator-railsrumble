@@ -7,7 +7,6 @@ class LaddersController < ApplicationController
     returning resource_service.new(params[:ladder]) do |ladder|
       ladder.owner = current_player
       ladder.players << current_player
-      flash[:success] = "You have been added to this ladder."
     end
   end
   
