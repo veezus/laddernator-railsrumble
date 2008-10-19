@@ -155,6 +155,10 @@ a.join {
   font-weight: bold;
 }
 
+h1 {
+  margin-bottom: 10px;
+}
+
 h1 a {
   font-variant: small-caps;
   color: #4e9771;
