@@ -134,6 +134,7 @@ a.join {
 }
 
 h1 a {
+  font-variant: small-caps;
   color: #4e9771;
 }
 

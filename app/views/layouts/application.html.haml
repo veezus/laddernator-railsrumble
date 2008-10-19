@@ -17,7 +17,7 @@
         %strong== #{key.to_s.capitalize}:
         = message
     #wrapper
-      %h1= link_to 'LADDERNATOR', root_path
+      %h1= link_to 'Laddernator', root_path
       %ul#navigation.alt
         - if logged_in?
           = link_to "Create ladder", new_ladder_path
