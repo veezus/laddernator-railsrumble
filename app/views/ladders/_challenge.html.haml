@@ -1,6 +1,6 @@
-- challengee = current_player.next_player_for(ladder)
-.challenge.box.clearfix
-  .span-12.info
-    = challengee.login
-    is currently above you.
-  .span-6.last= link_to "Challenge!", ladder_challenges_path(ladder, :challengee_id => challengee), :method => :post, :class => 'challenge button'
+- if challengee = current_player.next_player_for(ladder)
+  .challenge.box.clearfix
+    .span-12.info
+      = challengee.login
+      is currently above you.
+    .span-6.last= link_to "Challenge!", ladder_challenges_path(ladder, :challengee_id => challengee), :method => :post, :class => 'challenge button'

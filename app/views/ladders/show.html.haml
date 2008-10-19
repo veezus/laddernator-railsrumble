@@ -1,6 +1,12 @@
-= render :partial => 'challenge', :locals => {:ladder => @ladder}
-/= render :partial => 'acceptance'
-/= render :partial => 'pending'
+- if logged_in?
+  - if @ladder.players.include?(current_player)
+    - if current_player.pending_challenge?
+      = render :partial => 'pending'
+    - else
+      = render :partial => 'challenge', :locals => {:ladder => @ladder}
+    /= render :partial => 'acceptance'
+  - else
+    = render :partial => 'join'
 
 .players.table
   .player.table
