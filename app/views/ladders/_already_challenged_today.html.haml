@@ -4,4 +4,7 @@
     - if challenge.won_by?(current_player)
       == Songs will be sung of your victory over #{opponent.login} today!
     - else
-      == You lost. Don't worry, you can challenge #{opponent.login} tomorrow.
+      - if challenge.challengee?(current_player)
+        == You lost your spot to #{opponent.login}!
+      - else
+        == You lost. Don't worry, you can challenge #{opponent.login} tomorrow.

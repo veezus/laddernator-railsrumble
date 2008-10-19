@@ -44,4 +44,7 @@
         .span-8.name= player.login
         .span-2.wins.number= Challenge.for_player(player).on_ladder(@ladder).select{|c| c.won_by?(player)}.size
         .span-2.losses.number= Challenge.for_player(player).on_ladder(@ladder).select{|c| c.lost_by?(player)}.size
+        - unless (todays_challenges = Challenge.for_player(player).on_ladder(@ladder).today).empty?
+          - won = todays_challenges.first.won_by?(player)
+          .result.number{:class => won ? 'won' : 'lost'}== #{won ? '+' : '-'}1
 

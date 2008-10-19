@@ -162,6 +162,28 @@ a.join {
   font-weight: bold;
 }
 
+.table .player.row {position: relative;}
+
+.table .player .result {
+  position: absolute;
+  top: 6px; right: -3px;
+  width: 17px; height: 24px;
+  background: #333 url(/images/flag_right_green.png) no-repeat top right;
+  color: #fff !important;
+  font-size: 10px;
+  font-weight: normal;
+  line-height: 24px;
+  margin: 3px 0 4px -5px;
+  padding: 3px;
+  padding-left:  9px !important;
+  padding-right: 9px !important;
+  text-align: center;
+}
+
+.table .player .result.lost {
+  background: #333 url(/images/flag_right_red.png) no-repeat top right;
+}
+
 h1 {
   margin-bottom: 10px;
 }
