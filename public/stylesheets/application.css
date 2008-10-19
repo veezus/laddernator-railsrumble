@@ -55,6 +55,11 @@ a {
   line-height: 40px;
 }
 
+.button {
+  -moz-border-radius:    8px;
+  -webkit-border-radius: 8px;
+}
+
 .challenge .info {
   margin-top: 5px;
 }
@@ -134,6 +139,17 @@ a.join {
   bottom: -3px;
 }
 
+.table .result .support {
+  display: block;
+  height: 3px;
+  width:  4px;
+  background: url(/images/right_support.png);
+  position: absolute;
+  bottom: -3px;
+  right: 0;
+}
+
+
 .table .row.me {
   background: #FCFFD2;
 }
@@ -166,7 +182,7 @@ a.join {
 
 .table .player .result {
   position: absolute;
-  top: 6px; right: -3px;
+  top: 6px; right: -5px;
   width: 17px; height: 24px;
   background: #333 url(/images/flag_right_green.png) no-repeat top right;
   color: #fff !important;
@@ -288,7 +304,3 @@ h1 a {
 
 .row .wins   {  border-right: 1px solid #dedbdb; margin-right: 0;  margin-left: 13px; width: 47px; }
 .row .losses {  border-left: 1px solid #fefdfd;  margin-left: 0;   padding-left: 37px;}
-
-#footer {
-  
-}
