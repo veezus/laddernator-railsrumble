@@ -20,6 +20,19 @@ body {
   margin: 0 auto;
 }
 
+#footer {
+  width: 750px;
+  margin: 0 auto;
+  padding: 0;
+  padding-top: 10px;
+  text-align: right;
+  color: #cbb6b6;
+}
+
+  #footer a {
+    color: #fff;
+  }
+
 a {
   color: #AA2F20;
   text-decoration: none;
@@ -246,3 +259,7 @@ h1 a {
 
 .row .wins   {  border-right: 1px solid #dedbdb; margin-right: 0;  margin-left: 13px; width: 47px; }
 .row .losses {  border-left: 1px solid #fefdfd;  margin-left: 0;   padding-left: 37px;}
+
+#footer {
+  
+}
