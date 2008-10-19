@@ -57,7 +57,6 @@ a {
 
 .challenge .info {
   margin-top: 5px;
-  margin-left: 10px;
 }
 
 .box {
@@ -130,6 +129,10 @@ a.join {
   position: absolute;
   left: 0;
   bottom: -3px;
+}
+
+.table .row.me {
+  background: #FCFFD2;
 }
 
 .table .row.me .rank {
@@ -229,13 +232,7 @@ h1 a {
   font-weight: bold;
 }
 
-.challenge { position: relative; }
-.challenge .button { 
-  position: absolute; 
-  top: 8px; 
-  right: 15px; 
-  width: 200px; 
-}
+.challenge.box { position: relative; width: 710px;}
 
 #flash {
   z-index: 1000;
