@@ -58,6 +58,9 @@ a {
 .challenge .info {
   margin-top: 5px;
 }
+.challenge .info.span-12 {
+  width: 460px;
+}
 
 .box {
   padding: 10px;
@@ -232,7 +235,7 @@ h1 a {
   font-weight: bold;
 }
 
-.challenge.box { position: relative; width: 710px;}
+.challenge.box { position: relative; width: 700px;}
 
 #flash {
   z-index: 1000;
