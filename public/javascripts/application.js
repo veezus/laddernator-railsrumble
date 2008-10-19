@@ -3,5 +3,13 @@
 
 jQuery(document).ready(function($) {
   $('a[rel*=facebox]').facebox()
-}) 
+  
+  if($('#flash')) {
+    setTimeout('hide_flash()', 10000);
+  }
+  
+})
 
+function hide_flash() {
+  $('#flash').slideUp();
+}
