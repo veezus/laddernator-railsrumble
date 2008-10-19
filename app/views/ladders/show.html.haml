@@ -1,7 +1,7 @@
 - if logged_in?
   - if @ladder.players.include?(current_player)
-    - if current_player.pending_challenge?
-      = render :partial => 'pending'
+    - if current_player.pending_challenge_on?(@ladder)
+      = render :partial => 'pending', :locals => {:ladder => @ladder}
     - else
       - if current_player.can_make_challenge?(@ladder)
         = render :partial => 'challenge', :locals => {:ladder => @ladder}
@@ -23,5 +23,5 @@
       .span-1
         .rank.number= player.rank_for(@ladder).position
       .span-8.name= player.login
-      .span-2.wins.number
-      .span-2.losses.number
+      .span-2.wins.number= Challenge.for_player(player).on_ladder(@ladder).select{|c| c.won_by?(player)}.size
+      .span-2.losses.number= Challenge.for_player(player).on_ladder(@ladder).select{|c| c.lost_by?(player)}.size

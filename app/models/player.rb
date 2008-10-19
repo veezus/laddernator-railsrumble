@@ -14,12 +14,12 @@ class Player < ActiveRecord::Base
     rank_for(ladder).higher_item.player if rank_for(ladder).higher_item
   end
 
-  def pending_challenge
-    Challenge.pending.for_player(self).first
+  def pending_challenge_on(ladder)
+    Challenge.pending.for_player(self).on_ladder(ladder).first
   end
 
-  def pending_challenge?
-    !!pending_challenge
+  def pending_challenge_on?(ladder)
+    !!pending_challenge_on(ladder)
   end
 
   def last_challenge_on(ladder)
