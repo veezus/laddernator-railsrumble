@@ -2,5 +2,10 @@
 .ladder.row.clearfix{:class => "#{count.odd? ? 'odd' : 'even'} #{logged_in? && ladder.owned_by?(current_player) ? 'me' : ''}"}
   .span-1
     .rank.number== ##{count}
-  .span-14.name= link_to ladder.name, ladder
+  .span-10.name= link_to ladder.name, ladder
+  .span-4
+    - if current_player.pending_challenge_on?(ladder)
+      = link_to("Pending Challenge!", ladder)
+    - else
+      &nbsp;
   .span-2.players.number= ladder.players.size
