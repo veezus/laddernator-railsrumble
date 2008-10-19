@@ -4,11 +4,24 @@ class Challenge < ActiveRecord::Base
   belongs_to :challengee, :class_name => 'Player', :foreign_key => 'challengee_id'
   after_create :send_notifications
   
-  validates_presence_of :challenger, :challengee, :ladder
+  validates_presence_of   :challenger, :challengee, :ladder
+  validates_uniqueness_of :challenger_id, :scope => :ladder_id
+  validates_uniqueness_of :challengee_id, :scope => :ladder_id
   validate :membership_in_ladder, :position_of_challenger
+
+  named_scope :pending, :conditions => 'completed_at is null'
+  named_scope :for_player, lambda { |player| {:conditions => ['challenger_id = ? or challengee_id = ?', player.id, player.id] } }
   
   def completed?
     !!completed_at
+  end
+
+  def challenger?(player)
+    challenger == player
+  end
+
+  def challengee?(player)
+    challengee == player
   end
   
   private
