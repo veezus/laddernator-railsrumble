@@ -11,15 +11,15 @@
       - if challenge.unanswered? && challenge.challengee?(current_player)
         = render :partial => 'acceptance', :locals => {:ladder => @ladder, :challenge => challenge}
     - else
-      - challenge = Challenge.for_player(current_player).on_ladder(@ladder).last
       - if current_player.can_make_challenge?(@ladder)
         = render :partial => 'challenge', :locals => {:ladder => @ladder}
-      - if challenge.completed? && !challenge.won.nil?
-        = render :partial => 'already_challenged_today', :locals => {:ladder => @ladder, :challenge => challenge}
-      - if challenge.rejected? && challenge.challengee?(current_player) && challenge.won.nil?
-        = render :partial => 'rejected_a_challenge', :locals => {:challenge => challenge}
-      - if challenge.rejected? && challenge.challenger?(current_player) && challenge.won.nil?
-        = render :partial => 'your_challenge_was_rejected', :locals => {:challenge => challenge}
+      - if challenge = Challenge.for_player(current_player).on_ladder(@ladder).last
+        - if challenge.completed? && !challenge.won.nil?
+          = render :partial => 'already_challenged_today', :locals => {:ladder => @ladder, :challenge => challenge}
+        - if challenge.rejected? && challenge.challengee?(current_player) && challenge.won.nil?
+          = render :partial => 'rejected_a_challenge', :locals => {:challenge => challenge}
+        - if challenge.rejected? && challenge.challenger?(current_player) && challenge.won.nil?
+          = render :partial => 'your_challenge_was_rejected', :locals => {:challenge => challenge}
   - else
     = render :partial => 'join'
 
