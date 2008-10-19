@@ -3,6 +3,8 @@ class Player < ActiveRecord::Base
   
   has_many :ranks
   has_many :ladders, :through => :ranks
+  has_many :challenges_made, :class_name => 'Challenge', :foreign_key => 'challenger_id'
+  has_many :challenges_received, :class_name => 'Challenge', :foreign_key => 'challengee_id'
 
   def rank_for(ladder)
     ranks.find_by_ladder_id(ladder)
@@ -18,6 +20,14 @@ class Player < ActiveRecord::Base
 
   def pending_challenge?
     !!pending_challenge
+  end
+
+  def last_challenge_on(ladder)
+    challenges_made.on_ladder(ladder).last
+  end
+
+  def can_make_challenge?(ladder)
+    !challenges_made.on_ladder(ladder).today.any?
   end
   
   def deliver_notifications
