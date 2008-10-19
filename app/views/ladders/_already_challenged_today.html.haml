@@ -1,0 +1,7 @@
+- challengee = current_player.last_challenge_on(ladder).challengee
+.challenge.box.clearfix
+  .span-15.info
+    - if current_player.last_challenge_on(ladder).won?
+      == Songs will be sung of your victory over #{challengee.login} today!
+    - else
+      == Don't worry, you can challenge #{challengee.login} again tomorrow.

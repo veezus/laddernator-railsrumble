@@ -3,7 +3,10 @@
     - if current_player.pending_challenge?
       = render :partial => 'pending'
     - else
-      = render :partial => 'challenge', :locals => {:ladder => @ladder}
+      - if current_player.can_make_challenge?(@ladder)
+        = render :partial => 'challenge', :locals => {:ladder => @ladder}
+      - else
+        = render :partial => 'already_challenged_today', :locals => {:ladder => @ladder}
     /= render :partial => 'acceptance'
   - else
     = render :partial => 'join'
