@@ -48,4 +48,6 @@
           - challenge = todays_challenges.first
           - if challenge.won?
             - won = challenge.won_by?(player)
-            .result.number{:class => won ? 'won' : 'lost'}== #{won ? '+' : '-'}1
+            .result.number{:class => won ? 'won' : 'lost'}
+              %span.support &nbsp;
+              == #{won ? '+' : '-'}1
