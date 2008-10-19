@@ -18,10 +18,14 @@
       .span-2.wins Wins
       .span-2.losses Losses
 
-  - @ladder.players.each do |player|
-    .player.row.clearfix{:class => "#{player == current_player ? 'me' : ''}"}
-      .span-1
-        .rank.number= player.rank_for(@ladder).position
-      .span-8.name= player.login
-      .span-2.wins.number= Challenge.for_player(player).on_ladder(@ladder).select{|c| c.won_by?(player)}.size
-      .span-2.losses.number= Challenge.for_player(player).on_ladder(@ladder).select{|c| c.lost_by?(player)}.size
+  - if @ladder.players.empty?
+    .player.row.clearfix
+      .span-13.empty There are no players in this ladder.
+  - else
+    - @ladder.players.each do |player|
+      .player.row.clearfix{:class => "#{'me' if player == current_player}"}
+        .span-1
+          .rank.number= player.rank_for(@ladder).position
+        .span-8.name= player.login
+        .span-2.wins.number
+        .span-2.losses.number

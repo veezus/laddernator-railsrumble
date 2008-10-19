@@ -16,10 +16,6 @@ class ApplicationController < ActionController::Base
 
 protected
 
-  def get_ladders
-    @ladders = current_player.ladders if logged_in?
-  end
-
   def no_layout_for_xhr
     request.xhr? ? false : 'application'
   end

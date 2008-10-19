@@ -7,8 +7,7 @@ module ApplicationHelper
   ## haml classes
   
   def viewing_current_class(record, record_to_match)
-    'current' if record == record_to_match
-    ''
+    'current' if !record.nil? and record == record_to_match
   end
   
 end

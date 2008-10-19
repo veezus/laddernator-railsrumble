@@ -34,7 +34,7 @@ a {
 
 #navigation {
   position: absolute;
-  top:   9px;
+  top:   25px;
   right: 0;
   list-style-type: none;
   font-size: 16px;
@@ -166,6 +166,40 @@ h1 a {
 }
 
 #main {
+  position: relative;
+  border: 1px solid #f0f0f0;
   background: #fff;
   padding: 15px;
+}
+
+#ladders {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+#ladders li {
+  float: left;
+  margin-left:  5px;
+  margin-right: 5px;
+}
+
+#ladders li a {
+  padding:  5px !important;
+  background: #fff;  
+  border: 1px solid #f7f7f7;
+  width: 150px;  
+}
+
+.inner {
+  clear: both;
+}
+
+.empty {
+  padding-left: 15px;
+  padding-right: 15px;
+  font-weight: bold;
 }
