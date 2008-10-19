@@ -33,7 +33,6 @@ class Challenge < ActiveRecord::Base
   def lost_by?(player)
     completed? && (challenger?(player) && lost?) || (challengee?(player) && won?)
   end
-
   def won!
     update_attribute(:won, true)
     update_attribute(:completed_at, Time.now)
@@ -44,12 +43,31 @@ class Challenge < ActiveRecord::Base
     update_attribute(:won, false)
     update_attribute(:completed_at, Time.now)
   end
-
   def lost?
     completed? && !won
   end
 
-  private
+  def accept!
+    update_attribute(:status, "accepted")
+  end
+  def accepted?
+    status == "accepted"
+  end
+
+  def reject!
+    update_attribute(:status, "rejected")
+  end
+  def rejected?
+    status == "rejected"
+  end
+
+  def unanswered?
+    status == nil
+  end
+
+  def self.rejections_left_for(player)
+    17
+  end
 
   #TODO
   def send_notifications
