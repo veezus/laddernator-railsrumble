@@ -1,13 +1,24 @@
 - if logged_in?
   - if @ladder.players.include?(current_player)
     - if current_player.pending_challenge_on?(@ladder)
-      = render :partial => 'pending', :locals => {:ladder => @ladder}
+      - challenge = current_player.pending_challenge_on(@ladder)
+      - if challenge.accepted? && challenge.challenger?(current_player)
+        = render :partial => 'pending', :locals => {:ladder => @ladder}
+      - if challenge.accepted? && challenge.challengee?(current_player)
+        = render :partial => 'in_progress', :locals => {:challenge => challenge}
+      - if challenge.rejected? && challenge.challengee?(current_player)
+        = render :partial => 'rejected_a_challenge', :locals => {:challenge => challenge}
+      - if challenge.rejected? && challenge.challenger?(current_player)
+        = render :partial => 'your_challenge_was_rejected', :locals => {:challenge => challenge}
+      - if challenge.unanswered? && challenge.challenger?(current_player)
+        = render :partial => 'awaiting_answer', :locals => {:challenge => challenge}
+      - if challenge.unanswered? && challenge.challengee?(current_player)
+        = render :partial => 'acceptance', :locals => {:ladder => @ladder, :challenge => challenge}
     - else
       - if current_player.can_make_challenge?(@ladder)
         = render :partial => 'challenge', :locals => {:ladder => @ladder}
       - else
         = render :partial => 'already_challenged_today', :locals => {:ladder => @ladder}
-    /= render :partial => 'acceptance'
   - else
     = render :partial => 'join'
 

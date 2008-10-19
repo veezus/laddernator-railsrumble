@@ -12,9 +12,17 @@ class ChallengesController < ApplicationController
     @challenge.lost!
   end
 
-  response_for :won, :lost do |format|
+  def accept
+    @challenge.accept!
+  end
+
+  def reject
+    @challenge.reject!
+  end
+
+  response_for :won, :lost, :accept, :reject do |format|
     format.html do
-      flash[:notice] = "Challenge updated"
+      flash[:notice] = "Duly noted!"
       redirect_to :back
     end
   end

@@ -1,7 +1,7 @@
 .challenge.box.clearfix
   .span-12.info
-    =link_to 'Jane Doe'
+    = challenge.challenger.login
     has challenged you!
   .span-6.last
-    .span-3= link_to "Accept!", nil, :class => 'accept button'
-    .span-3.last= link_to "Reject!", nil, :class => 'reject button'
+    .span-3= link_to "Accept!", accept_challenge_path(challenge), :method => :put, :class => 'accept button'
+    .span-3.last= link_to "Reject!", reject_challenge_path(challenge), :method => :put, :class => 'reject button'
