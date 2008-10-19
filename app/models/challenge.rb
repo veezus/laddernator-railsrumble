@@ -5,14 +5,18 @@ class Challenge < ActiveRecord::Base
   after_create :send_notifications
   
   validates_presence_of   :challenger, :challengee, :ladder
-  validates_uniqueness_of :challenger_id, :scope => :ladder_id, :if => Proc.new { |challenge| challenge.challenger && Challenge.for_player(challenge.challenger).pending.any? }
-  validates_uniqueness_of :challengee_id, :scope => :ladder_id, :if => Proc.new { |challenge| challenge.challengee && Challenge.for_player(challenge.challengee).pending.any? }
+  # validates_uniqueness_of :challenger_id, :scope => :ladder_id, :if => Proc.new { |challenge| challenge.challenger && Challenge.for_player(challenge.challenger).pending.any? }
+  # validates_uniqueness_of :challengee_id, :scope => :ladder_id, :if => Proc.new { |challenge| challenge.challengee && Challenge.for_player(challenge.challengee).pending.any? }
   validate :membership_in_ladder, :position_of_challenger
 
   named_scope :pending, :conditions => 'completed_at is null'
   named_scope :for_player, lambda { |player| {:conditions => ['challenger_id = ? or challengee_id = ?', player.id, player.id] } }
   named_scope :today, lambda { |date| {:conditions => ['created_at >= ? AND created_at <= ?', Date.today.to_time, 1.second.ago(Date.tomorrow)]} }
   named_scope :on_ladder, lambda { |ladder| {:conditions => ['ladder_id = ?', ladder.id]} }
+
+  named_scope :accepted, :conditions => "status = 'accepted'"
+  named_scope :rejected, :conditions => "status = 'rejected'"
+  named_scope :rejections_since, lambda {|challenge| {:conditions => ["id > ? AND status = 'rejected'", challenge.id]} }
   
   def completed?
     !!completed_at
@@ -44,7 +48,7 @@ class Challenge < ActiveRecord::Base
     update_attribute(:completed_at, Time.now)
   end
   def lost?
-    completed? && !won
+    completed? && accepted? && !won
   end
 
   def accept!
@@ -55,18 +59,17 @@ class Challenge < ActiveRecord::Base
   end
 
   def reject!
+    lost! if ladder.last_rejection_for?(challengee)
     update_attribute(:status, "rejected")
+    update_attribute(:completed_at, Time.now)
   end
+
   def rejected?
     status == "rejected"
   end
 
   def unanswered?
     status == nil
-  end
-
-  def self.rejections_left_for(player)
-    17
   end
 
   #TODO

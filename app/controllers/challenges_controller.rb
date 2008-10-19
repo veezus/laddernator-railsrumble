@@ -18,17 +18,27 @@ class ChallengesController < ApplicationController
 
   def reject
     @challenge.reject!
+    @challenge.lost! unless @challenge.ladder.rejections_left_for(@challenge.challengee)
   end
 
-  response_for :won, :lost, :accept, :reject do |format|
+  response_for :won, :lost, :accept do |format|
     format.html do
       flash[:notice] = "Duly noted!"
       redirect_to :back
     end
   end
 
-  response_for :create do |format|
+  response_for :reject do |format|
     format.html do
+      if @challenge.lost?
+        flash[:notice] = "You lost by default for rejecting too many challenges!"
+      end
+      redirect_to :back
+    end
+  end
+
+  response_for :create do |format|
+    format.any do
       if @challenge.new_record?
         flash[:error] = "Couldn't create your challenge!"
       else

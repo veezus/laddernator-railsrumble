@@ -15,7 +15,7 @@ class Player < ActiveRecord::Base
   end
 
   def pending_challenge_on(ladder)
-    Challenge.pending.for_player(self).on_ladder(ladder).first
+    Challenge.today.pending.for_player(self).on_ladder(ladder).first
   end
 
   def pending_challenge_on?(ladder)
