@@ -101,6 +101,8 @@ a.join {
   border-right: 1px solid #5b5b5b;
   font-size: 14px;
   line-height: 36px;
+  -moz-border-radius: 4px 4px 0 0;
+  -webkit-border-radius: 4px 4px 0 0;
 }
 
 .table .name {
