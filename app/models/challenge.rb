@@ -72,10 +72,8 @@ class Challenge < ActiveRecord::Base
     status == nil
   end
 
-  #TODO
   def send_notifications
-    #challenger.send_notifications
-    #challengee.send_notifications
+    Notification.deliver_challenged(challenger, challengee)
   end
 
   private

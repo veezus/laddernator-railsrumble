@@ -65,4 +65,13 @@ describe Challenge do
       @challenge.should be_completed
     end
   end
+
+  describe "notifications" do
+    it "should send the challengee a notification" do
+      challengee = Player.generate!
+      challenge = Challenge.new(:challenger => mock_model(Player), :challengee => challengee)
+      Notification.should_receive(:deliver_challenged).with(challengee)
+      challenge.save_without_validation
+    end
+  end
 end
