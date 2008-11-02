@@ -4,6 +4,7 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :challenges, :member => {:won => :put, :lost => :put, :accept => :put, :reject => :put}
   map.resources :ladders, :has_many => [:challenges, :ranks]
+  map.resources :ranks, :member => {:higher => :put, :lower => :put}
 
   map.login 'login', :controller => 'sessions', :action => 'new'
   map.signup 'signup', :controller => 'players', :action => 'new'

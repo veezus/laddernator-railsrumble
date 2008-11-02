@@ -200,6 +200,10 @@ a.join {
   background: #333 url(/images/flag_right_red.png) no-repeat top right;
 }
 
+span.owner_actions {
+ font-size: 10px;
+}
+
 h1 {
   margin-bottom: 10px;
 }

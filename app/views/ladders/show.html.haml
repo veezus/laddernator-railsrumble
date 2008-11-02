@@ -41,7 +41,13 @@
           .rank.number
             %span.support &nbsp;
             == ##{player.rank_for(@ladder).position}
-        .span-8.name= player.login
+        .span-8.name
+          = player.login
+          - if @ladder.owned_by?(current_player)
+            %span.owner_actions
+              = link_to 'Move up', higher_rank_path(player.rank_for(@ladder)), :method => :put
+              = link_to 'Move down', lower_rank_path(player.rank_for(@ladder)), :method => :put
+              = link_to 'Remove', ladder_rank_path(@ladder, player.rank_for(@ladder)), :method => :delete, :confirm => 'Are you sure?'
         .span-2.wins.number= Challenge.for_player(player).on_ladder(@ladder).select{|c| c.won_by?(player)}.size
         .span-2.losses.number= Challenge.for_player(player).on_ladder(@ladder).select{|c| c.lost_by?(player)}.size
         - unless (todays_challenges = Challenge.for_player(player).on_ladder(@ladder).today).empty?
