@@ -1,4 +1,5 @@
 config/database.yml
+config/settings.yml
 db/schema.rb
 *.DS_Store*
 log/*
