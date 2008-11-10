@@ -66,11 +66,21 @@ Rails::Initializer.run do |config|
   # config.active_record.observers = :cacher, :garbage_collector
 end
 
+config_file_path = File.join(RAILS_ROOT, *%w(config settings.yml))  
+if File.exist?(config_file_path)
+  config = YAML.load_file(config_file_path)
+  APP_CONFIG = config.has_key?(RAILS_ENV) ? config[RAILS_ENV] : {}  
+else
+  puts "WARNING: configuration file #{config_file_path} not found."-
+  APP_CONFIG = {}
+end
+
 ActionMailer::Base.smtp_settings = {
   :address        => "smtp.gmail.com",
   :port           => 587,
   :domain         => 'laddernator.com',
-  :user_name      => "noreply@laddernator.com",
-  :password       => 'c129cfa',
+  :user_name      => APP_CONFIG[:gmail][:user_name],
+  :password       => APP_CONFIG[:gmail][:password],
   :authentication => :login
 }
+
