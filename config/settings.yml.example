@@ -1,0 +1,12 @@
+production:
+  gmail:
+    user_name:
+    password:
+staging:
+  gmail:
+    user_name:
+    password:
+development:
+  gmail:
+    user_name:
+    password:
