@@ -1,8 +1,8 @@
-set :application, "ladder"
-set :domain, "ladder.r08.railsrumble.com"
-set :deploy_to, "/srv/#{application}"
-set :web_command, "sudo /etc/init.d/nginx"
-set :mongrel_command, "sudo -u ladder /var/lib/gems/1.8/bin/mongrel_rails"
+set :application, "laddernator"
+set :domain, "veez@li44-246.members.linode.com"
+set :deploy_to, "/var/www/apps/#{application}"
+set :mongrel_command, "true"
+set :passenger_restart, "touch /var/www/apps/#{application}/current/tmp/restart.txt"
 
 Rake.clear_tasks('vlad:update','vlad:start_web')
 
@@ -39,6 +39,6 @@ namespace :vlad do
   end
 
   remote_task :start_web, :roles => :app do
-    run "#{web_command} stop; #{web_command} start"
+    run "#{passenger_restart}"
   end
 end
