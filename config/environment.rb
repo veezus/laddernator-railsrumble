@@ -74,13 +74,3 @@ else
   puts "WARNING: configuration file #{config_file_path} not found."-
   APP_CONFIG = {}
 end
-
-ActionMailer::Base.smtp_settings = {
-  :address        => "smtp.gmail.com",
-  :port           => 587,
-  :domain         => 'laddernator.com',
-  :user_name      => APP_CONFIG[:gmail][:user_name],
-  :password       => APP_CONFIG[:gmail][:password],
-  :authentication => :login
-}
-
