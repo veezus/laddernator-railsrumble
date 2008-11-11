@@ -71,6 +71,6 @@ if File.exist?(config_file_path)
   config = YAML.load_file(config_file_path)
   APP_CONFIG = config.has_key?(RAILS_ENV) ? config[RAILS_ENV] : {}  
 else
-  puts "WARNING: configuration file #{config_file_path} not found."-
+  puts "WARNING: configuration file #{config_file_path} not found."
   APP_CONFIG = {}
 end
