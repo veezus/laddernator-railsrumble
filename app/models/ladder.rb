@@ -16,9 +16,9 @@ class Ladder < ActiveRecord::Base
 
   def rejections_left_for(player)
     if most_recent_accepted_challenge = challenges.for_player(player).accepted.select{|c| c.challenger?(player)}.last
-      REJECTIONS_ALLOWED - challenges.rejections_since(most_recent_accepted_challenge).size
+      REJECTIONS_ALLOWED - challenges.for_player(player).rejections_since(most_recent_accepted_challenge).size
     else
-      REJECTIONS_ALLOWED - challenges.for_player(player).rejected.size
+      REJECTIONS_ALLOWED - challenges.with_challengee(player).rejected.size
     end
   end
 

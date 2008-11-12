@@ -11,6 +11,7 @@ class Challenge < ActiveRecord::Base
 
   named_scope :pending, :conditions => 'completed_at is null'
   named_scope :for_player, lambda { |player| {:conditions => ['challenger_id = ? or challengee_id = ?', player.id, player.id] } }
+  named_scope :with_challengee, lambda { |challengee| {:conditions => ['challengee_id = ?', challengee.id] } }
   named_scope :today, lambda { |date| {:conditions => ['created_at >= ? AND created_at <= ?', Date.today.to_time, 1.second.ago(Date.tomorrow)]} }
   named_scope :on_ladder, lambda { |ladder| {:conditions => ['ladder_id = ?', ladder.id]} }
 
