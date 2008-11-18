@@ -5,5 +5,5 @@
     - if ladder.last_rejection_for?(current_player)
       %span.small.quiet You lose if you reject.
   .span-6.last
-    .span-3= link_to "Accept!", accept_challenge_path(challenge), :method => :put, :class => 'accept button'
-    .span-3.last= link_to "Reject!", reject_challenge_path(challenge), :method => :put, :class => 'reject button'
+    .span-3= link_to "Accept!", accept_ladder_challenge_path([challenge.ladder, challenge]), :method => :put, :class => 'accept button'
+    .span-3.last= link_to "Reject!", reject_ladder_challenge_path([challenge.ladder, challenge]), :method => :put, :class => 'reject button'
