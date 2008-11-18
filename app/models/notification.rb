@@ -1,5 +1,5 @@
 class Notification < ActionMailer::Base
-  ActionMailer::Base.default_url_options[:host] ||= "laddernator.com"
+  ActionMailer::Base.default_url_options[:host] ||= "hashrocket.laddernator.com"
 
   def challenged(challenger, challengee, challenge)
     set_up_email
