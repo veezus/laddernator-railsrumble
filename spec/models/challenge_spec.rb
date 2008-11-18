@@ -74,5 +74,21 @@ describe Challenge do
       Notification.should_receive(:deliver_challenged).with(challenger, challengee)
       challenge.save_without_validation
     end
+    it "should send the challenger a notification when it is rejected" do
+      challengee = Player.generate!
+      challenger = Player.generate!
+      challenge = Challenge.new(:challenger => challenger, :challengee => challengee)
+      challenge.save_without_validation
+      Notification.should_receive(:deliver_rejected_challenge).with(challenger, challengee)
+      challenge.update_attribute(:status, "rejected")
+    end
+    it "should send the challenger a notification when it is accepted" do
+      challengee = Player.generate!
+      challenger = Player.generate!
+      challenge = Challenge.new(:challenger => challenger, :challengee => challengee)
+      challenge.save_without_validation
+      Notification.should_receive(:deliver_accepted_challenge).with(challenger, challengee, challenge)
+      challenge.update_attribute(:status, "accepted")
+    end
   end
 end

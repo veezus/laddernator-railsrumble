@@ -3,6 +3,7 @@ class Challenge < ActiveRecord::Base
   belongs_to :challenger, :class_name => 'Player', :foreign_key => 'challenger_id'
   belongs_to :challengee, :class_name => 'Player', :foreign_key => 'challengee_id'
   after_create :send_notifications
+  after_save :send_updates
   
   validates_presence_of   :challenger, :challengee, :ladder
   # validates_uniqueness_of :challenger_id, :scope => :ladder_id, :if => Proc.new { |challenge| challenge.challenger && Challenge.for_player(challenge.challenger).pending.any? }
@@ -75,6 +76,14 @@ class Challenge < ActiveRecord::Base
 
   def send_notifications
     Notification.deliver_challenged(challenger, challengee)
+  end
+  
+  def send_updates
+    if rejected?
+      Notification.deliver_rejected_challenge(challenger, challengee)
+    elsif accepted?
+      Notification.deliver_accepted_challenge(challenger, challengee, self)
+    end
   end
 
   private
