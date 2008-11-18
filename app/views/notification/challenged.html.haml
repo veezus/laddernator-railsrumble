@@ -2,9 +2,9 @@
 Login to the site to accept or reject your challenge
 
 == I will strike down upon #{@challenger.login} with great vengeance!
-= url_for(accept_challenge_url(@challenge))
+= url_for(accept_challenge_url([@challenge.ladder, @challenge]))
 
 Reject this loathsome usurper's challenge!
-= url_for(reject_challenge_url(@challenge))
+= url_for(reject_challenge_url([@challenge.ladder, @challenge]))
 
 http://hashrocket.laddernator.com/
