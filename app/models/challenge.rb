@@ -75,7 +75,7 @@ class Challenge < ActiveRecord::Base
   end
 
   def send_notifications
-    Notification.deliver_challenged(challenger, challengee)
+    Notification.deliver_challenged(challenger, challengee, self)
   end
   
   def send_updates

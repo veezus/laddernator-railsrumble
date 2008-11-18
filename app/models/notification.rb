@@ -1,10 +1,11 @@
 class Notification < ActionMailer::Base
   ActionMailer::Base.default_url_options[:host] ||= "laddernator.com"
 
-  def challenged(challenger, challengee)
+  def challenged(challenger, challengee, challenge)
     set_up_email
     recipients challengee.email
     subject    "You have been challenged by #{challenger.login}!  You have until the end of the day to respond."
+    body :challenger => challenger, :challengee => challengee, :challenge => challenge
   end
   
   def accepted_challenge(challenger, challengee, challenge)
