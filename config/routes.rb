@@ -3,7 +3,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resource :session
 
   map.resources :ladders, :has_many => [:ranks] do |ladder|
-    ladder.resources :challenges, :member => {:won => :put, :lost => :put, :accept => :put, :reject => :put}
+    ladder.resources :challenges, :member => {:won => [:put, :get], :lost => [:put, :get], :accept => [:put, :get], :reject => [:put, :get]}
   end
   map.resources :ranks, :member => {:higher => :put, :lower => :put}
 
