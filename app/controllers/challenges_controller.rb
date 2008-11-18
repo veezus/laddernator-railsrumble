@@ -24,7 +24,7 @@ class ChallengesController < ApplicationController
   response_for :won, :lost, :accept do |format|
     format.html do
       flash[:notice] = "Duly noted!"
-      redirect_to :back
+      redirect_to resource.ladder
     end
   end
 
@@ -33,7 +33,7 @@ class ChallengesController < ApplicationController
       if @challenge.lost?
         flash[:notice] = "You lost by default for rejecting too many challenges!"
       end
-      redirect_to :back
+      redirect_to resource.ladder
     end
   end
 
