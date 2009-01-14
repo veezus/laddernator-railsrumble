@@ -16,7 +16,7 @@ describe SessionsController do
   end
 
   it 'logs out' do
-    login_as :quentin
+    login_as players(:quentin)
     get :destroy
     session[:player_id].should be_nil
     response.should be_redirect
@@ -33,7 +33,7 @@ describe SessionsController do
   end
 
   it 'deletes token on logout' do
-    login_as :quentin
+    login_as players(:quentin)
     get :destroy
     response.cookies["auth_token"].should == []
   end
