@@ -6,8 +6,6 @@ class Challenge < ActiveRecord::Base
   after_save :send_updates
   
   validates_presence_of   :challenger, :challengee, :ladder
-  # validates_uniqueness_of :challenger_id, :scope => :ladder_id, :if => Proc.new { |challenge| challenge.challenger && Challenge.for_player(challenge.challenger).pending.any? }
-  # validates_uniqueness_of :challengee_id, :scope => :ladder_id, :if => Proc.new { |challenge| challenge.challengee && Challenge.for_player(challenge.challengee).pending.any? }
   validate :membership_in_ladder, :position_of_challenger
 
   named_scope :pending, :conditions => 'completed_at is null'
