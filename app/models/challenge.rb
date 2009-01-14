@@ -4,7 +4,7 @@ class Challenge < ActiveRecord::Base
   belongs_to :challengee, :class_name => 'Player', :foreign_key => 'challengee_id'
   after_create :send_notifications
   after_save :send_updates
-  
+
   validates_presence_of   :challenger, :challengee, :ladder
   validate :membership_in_ladder, :position_of_challenger
 
@@ -17,7 +17,7 @@ class Challenge < ActiveRecord::Base
   named_scope :accepted, :conditions => "status = 'accepted'"
   named_scope :rejected, :conditions => "status = 'rejected'"
   named_scope :rejections_since, lambda {|challenge| {:conditions => ["id > ? AND status = 'rejected'", challenge.id]} }
-  
+
   def completed?
     !!completed_at
   end
@@ -75,7 +75,7 @@ class Challenge < ActiveRecord::Base
   def send_notifications
     Notification.deliver_challenged(challenger, challengee, self)
   end
-  
+
   def send_updates
     if rejected?
       Notification.deliver_rejected_challenge(challenger, challengee)
