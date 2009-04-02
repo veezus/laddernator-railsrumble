@@ -1,10 +1,9 @@
-- challengee = current_player.pending_challenge_on(ladder).challengee
 .challenge.box.clearfix
   .span-12.info
-    == You have challenged #{challengee.login}.
-  - if current_player.pending_challenge_on(ladder).challenger?(current_player)
+    == You have challenged #{challenge.challengee.login}.
+  - if challenge.challenger?(current_player)
     .span-6.last
-      .span-3= link_to "I won!", won_challenge_path(current_player.pending_challenge_on(ladder)), :method => :put, :class => 'accept button'
-      .span-3.last= link_to "I lost...", lost_challenge_path(current_player.pending_challenge_on(ladder)), :method => :put, :class => 'reject button'
+      .span-3= link_to "I won!", won_ladder_challenge_path(:ladder_id => ladder.id, :id => challenge.id), :class => 'accept button'
+      .span-3.last= link_to "I lost...", lost_ladder_challenge_path(:ladder_id => ladder.id, :id => challenge.id), :class => 'reject button'
   - else
     .span-6.last= link_to "Pending!", nil, :class => 'pending button'

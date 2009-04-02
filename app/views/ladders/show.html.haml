@@ -3,7 +3,7 @@
     - if current_player.pending_challenge_on?(@ladder)
       - challenge = current_player.pending_challenge_on(@ladder)
       - if challenge.accepted? && challenge.challenger?(current_player)
-        = render :partial => 'pending', :locals => {:ladder => @ladder}
+        = render :partial => 'pending', :locals => {:ladder => @ladder, :challenge => current_player.pending_challenge_on(@ladder)}
       - if challenge.accepted? && challenge.challengee?(current_player)
         = render :partial => 'in_progress', :locals => {:challenge => challenge}
       - if challenge.unanswered? && challenge.challenger?(current_player)
