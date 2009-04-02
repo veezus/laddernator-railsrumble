@@ -18,6 +18,11 @@ class Challenge < ActiveRecord::Base
   named_scope :rejected, :conditions => "status = 'rejected'"
   named_scope :rejections_since, lambda {|challenge| {:conditions => ["id > ? AND status = 'rejected'", challenge.id]} }
 
+  def self.expire_pending
+    accepted.map(&:lost!)
+    pending.map(&:reject!)
+  end
+
   def completed?
     !!completed_at
   end

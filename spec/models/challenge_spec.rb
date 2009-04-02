@@ -120,4 +120,35 @@ describe Challenge do
       challenge.update_attribute(:status, "accepted")
     end
   end
+
+  describe ".expire_pending" do
+    before do
+      @unanswered = Challenge.spawn(:status => nil)
+      @accepted   = Challenge.spawn(:status => 'accepted')
+      @completed  = Challenge.spawn(:completed_at => Time.now, :won => true)
+      [@unanswered, @accepted, @completed].each do |challenge|
+        challenge.ladder.players << challenge.challengee
+        challenge.ladder.players << challenge.challenger
+        challenge.save!
+      end
+    end
+    it "marks an unanswered challenge as rejected" do
+      Challenge.expire_pending
+      @unanswered.reload.should be_rejected
+    end
+    it "marks an accepted but incomplete challenge as lost" do
+      Challenge.expire_pending
+      @accepted.reload.should be_lost
+    end
+    it "does things in the right order" do
+      Challenge.expire_pending
+      @unanswered.reload.should be_rejected
+      @accepted.reload.should be_lost
+      @accepted.should be_accepted
+    end
+    it "does not affect a completed challenge" do
+      Challenge.expire_pending
+      Challenge.find(@completed).should be_won
+    end
+  end
 end
