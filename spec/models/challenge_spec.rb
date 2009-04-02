@@ -54,7 +54,36 @@ describe Challenge do
       Challenge.create(:ladder => ladder, :challenger => challenger, :challengee => challengee).should_not be_valid
     end
   end
-  
+
+  describe "named scopes" do
+    before do
+      @unanswered = Challenge.spawn(:status => nil)
+      @accepted   = Challenge.spawn(:status => 'accepted')
+      @rejected   = Challenge.spawn(:status => 'rejected')
+      @completed  = Challenge.spawn(:completed_at => Time.now, :won => true)
+      [@unanswered, @accepted, @rejected, @completed].each do |challenge|
+        challenge.ladder.players << challenge.challengee
+        challenge.ladder.players << challenge.challenger
+        challenge.save!
+      end
+    end
+    describe "pending" do
+      it "should return the correct challenges" do
+        Challenge.pending.should == [@unanswered, @accepted, @rejected]
+      end
+    end
+    describe "accepted" do
+      it "should return the correct challenges" do
+        Challenge.accepted.should == [@accepted]
+      end
+    end
+    describe "rejected" do
+      it "should return the correct challenges" do
+        Challenge.rejected.should == [@rejected]
+      end
+    end
+  end
+
   describe "#complete?" do
     it "should return false if completed_at is nil" do
       @challenge.completed_at = nil
