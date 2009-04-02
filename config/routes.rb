@@ -3,7 +3,6 @@ ActionController::Routing::Routes.draw do |map|
   map.resource :session
 
   map.resources :ladders, :has_many => [:ranks] do |ladder|
-    #TODO: Find a better way of handling these gets that should be puts (they are links in emails)
     ladder.resources :challenges, :member => {:won => :put, :lost => :put, :accept => :get, :reject => :get}
   end
   map.resources :ranks, :member => {:higher => :put, :lower => :put}
