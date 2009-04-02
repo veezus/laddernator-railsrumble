@@ -48,7 +48,7 @@ class Challenge < ActiveRecord::Base
     update_attribute(:completed_at, Time.now)
   end
   def lost?
-    completed? && accepted? && !won
+    completed? && !won
   end
 
   def accept!
