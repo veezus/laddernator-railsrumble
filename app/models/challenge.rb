@@ -8,12 +8,12 @@ class Challenge < ActiveRecord::Base
   validates_presence_of   :challenger, :challengee, :ladder
   validate :membership_in_ladder, :position_of_challenger
 
-  named_scope :pending, :conditions => 'completed_at is null'
   named_scope :for_player, lambda { |player| {:conditions => ['challenger_id = ? or challengee_id = ?', player.id, player.id] } }
   named_scope :with_challengee, lambda { |challengee| {:conditions => ['challengee_id = ?', challengee.id] } }
   named_scope :today, lambda { |date| {:conditions => ['created_at >= ? AND created_at <= ?', Date.today.to_time, 1.second.ago(Date.tomorrow)]} }
   named_scope :on_ladder, lambda { |ladder| {:conditions => ['ladder_id = ?', ladder.id]} }
 
+  named_scope :pending, :conditions => 'completed_at is null'
   named_scope :accepted, :conditions => "status = 'accepted'"
   named_scope :rejected, :conditions => "status = 'rejected'"
   named_scope :rejections_since, lambda {|challenge| {:conditions => ["id > ? AND status = 'rejected'", challenge.id]} }
