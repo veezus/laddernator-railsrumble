@@ -2,7 +2,7 @@
 When you've finished the challenge, let us know how you did.
 
 I won!
-= url_for(won_challenge_url(@challenge))
+= url_for(won_ladder_challenge_url(@challenge.ladder, @challenge))
 
 I lost!
-= url_for(lost_challenge_url(@challenge))
+= url_for(lost_ladder_challenge_url(@challenge.ladder, @challenge))
